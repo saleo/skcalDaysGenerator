@@ -3,6 +3,7 @@ Summary,DTSTART,color
 十斋日,0101,red
 斗降,0103,red
 雷斋日,0106,blue
+上弦日,0107,red
 上弦日,0108,red
 四天王巡行,0108,red
 十斋日,0108,red
@@ -10,6 +11,7 @@ Summary,DTSTART,color
 十斋日,0114,red
 望,0115,blue
 十斋日,0115,red
+四天王巡行,0115,red
 十斋日,0118,red
 下弦日,0122,red
 下弦日,0123,red
@@ -26,6 +28,7 @@ Summary,DTSTART,color
 十斋日,0201,red
 斗降,0203,red
 雷斋日,0206,blue
+上弦日,0207,red
 上弦日,0208,red
 四天王巡行,0208,red
 十斋日,0208,red
@@ -33,6 +36,7 @@ Summary,DTSTART,color
 十斋日,0214,red
 望,0215,blue
 十斋日,0215,red
+四天王巡行,0215,red
 十斋日,0218,red
 下弦日,0222,red
 下弦日,0223,red
@@ -49,6 +53,7 @@ Summary,DTSTART,color
 十斋日,0301,red
 斗降,0303,red
 雷斋日,0306,blue
+上弦日,0307,red
 上弦日,0308,red
 四天王巡行,0308,red
 十斋日,0308,red
@@ -56,6 +61,7 @@ Summary,DTSTART,color
 十斋日,0314,red
 望,0315,blue
 十斋日,0315,red
+四天王巡行,0315,red
 十斋日,0318,red
 下弦日,0322,red
 下弦日,0323,red
@@ -72,6 +78,7 @@ Summary,DTSTART,color
 十斋日,0401,red
 斗降,0403,red
 雷斋日,0406,blue
+上弦日,0407,red
 上弦日,0408,red
 四天王巡行,0408,red
 十斋日,0408,red
@@ -79,6 +86,7 @@ Summary,DTSTART,color
 十斋日,0414,red
 望,0415,blue
 十斋日,0415,red
+四天王巡行,0415,red
 十斋日,0418,red
 下弦日,0422,red
 下弦日,0423,red
@@ -95,6 +103,7 @@ Summary,DTSTART,color
 十斋日,0501,red
 斗降,0503,red
 雷斋日,0506,blue
+上弦日,0507,red
 上弦日,0508,red
 四天王巡行,0508,red
 十斋日,0508,red
@@ -102,6 +111,7 @@ Summary,DTSTART,color
 十斋日,0514,red
 望,0515,blue
 十斋日,0515,red
+四天王巡行,0515,red
 十斋日,0518,red
 下弦日,0522,red
 下弦日,0523,red
@@ -118,6 +128,7 @@ Summary,DTSTART,color
 十斋日,0601,red
 斗降,0603,red
 雷斋日,0606,blue
+上弦日,0607,red
 上弦日,0608,red
 四天王巡行,0608,red
 十斋日,0608,red
@@ -125,6 +136,7 @@ Summary,DTSTART,color
 十斋日,0614,red
 望,0615,blue
 十斋日,0615,red
+四天王巡行,0615,red
 十斋日,0618,red
 下弦日,0622,red
 下弦日,0623,red
@@ -141,6 +153,7 @@ Summary,DTSTART,color
 十斋日,0701,red
 斗降,0703,red
 雷斋日,0706,blue
+上弦日,0707,red
 上弦日,0708,red
 四天王巡行,0708,red
 十斋日,0708,red
@@ -148,6 +161,7 @@ Summary,DTSTART,color
 十斋日,0714,red
 望,0715,blue
 十斋日,0715,red
+四天王巡行,0715,red
 十斋日,0718,red
 下弦日,0722,red
 下弦日,0723,red
@@ -164,6 +178,7 @@ Summary,DTSTART,color
 十斋日,0801,red
 斗降,0803,red
 雷斋日,0806,blue
+上弦日,0807,red
 上弦日,0808,red
 四天王巡行,0808,red
 十斋日,0808,red
@@ -171,6 +186,7 @@ Summary,DTSTART,color
 十斋日,0814,red
 望,0815,blue
 十斋日,0815,red
+四天王巡行,0815,red
 十斋日,0818,red
 下弦日,0822,red
 下弦日,0823,red
@@ -187,6 +203,7 @@ Summary,DTSTART,color
 十斋日,0901,red
 斗降,0903,red
 雷斋日,0906,blue
+上弦日,0907,red
 上弦日,0908,red
 四天王巡行,0908,red
 十斋日,0908,red
@@ -194,6 +211,7 @@ Summary,DTSTART,color
 十斋日,0914,red
 望,0915,blue
 十斋日,0915,red
+四天王巡行,0915,red
 十斋日,0918,red
 下弦日,0922,red
 下弦日,0923,red
@@ -210,6 +228,7 @@ Summary,DTSTART,color
 十斋日,1001,red
 斗降,1003,red
 雷斋日,1006,blue
+上弦日,1007,red
 上弦日,1008,red
 四天王巡行,1008,red
 十斋日,1008,red
@@ -217,6 +236,7 @@ Summary,DTSTART,color
 十斋日,1014,red
 望,1015,blue
 十斋日,1015,red
+四天王巡行,1015,red
 十斋日,1018,red
 下弦日,1022,red
 下弦日,1023,red
@@ -233,6 +253,7 @@ Summary,DTSTART,color
 十斋日,1101,red
 斗降,1103,red
 雷斋日,1106,blue
+上弦日,1107,red
 上弦日,1108,red
 四天王巡行,1108,red
 十斋日,1108,red
@@ -240,6 +261,7 @@ Summary,DTSTART,color
 十斋日,1114,red
 望,1115,blue
 十斋日,1115,red
+四天王巡行,1115,red
 十斋日,1118,red
 下弦日,1122,red
 下弦日,1123,red
@@ -256,6 +278,7 @@ Summary,DTSTART,color
 十斋日,1201,red
 斗降,1203,red
 雷斋日,1206,blue
+上弦日,1207,red
 上弦日,1208,red
 四天王巡行,1208,red
 十斋日,1208,red
@@ -263,6 +286,7 @@ Summary,DTSTART,color
 十斋日,1214,red
 望,1215,blue
 十斋日,1215,red
+四天王巡行,1215,red
 十斋日,1218,red
 下弦日,1222,red
 下弦日,1223,red

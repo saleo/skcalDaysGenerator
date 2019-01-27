@@ -7,10 +7,12 @@ filename=process.argv[2];
 csv.fromPath("./"+filename+".csv", {
     headers: true
 }).on("data", function(data) {
-    let args = {
+    var mm=(''+data.DTSTART).substr(0,2)
+    var dd=(''+data.DTSTART).substr(2,2)      
+    let args = {      
         lunar_year: +(filename.substr(5,4)),
-        lunar_month: moment(data.DTSTART, 'MMDD').format('M'),
-        lunar_day: moment(data.DTSTART, 'MMDD').format('D'),
+        lunar_month: +mm,
+        lunar_day: +dd,
         name: data.Summary,
         color: data.color,
         count: 1
