@@ -1,4 +1,4 @@
 
 *.cache
-public/test.ics
+public/test.*
 public/.~lock*
