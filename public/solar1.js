@@ -1,6 +1,7 @@
 let csv=require("fast-csv");
-let fs=require("fs");
-let i=0;
+let moment = require('moment');
+let lbc = require("lunar-birthday-calendar");
+
 let gengCountsAfterXiazhi=-1, gengAfterDongzhi=-1, xinAfterDongzhi=-1,wuCountsAfterLiChun=-1,wuCountsAfterLiQiu=-1,xuCountsAfterDongzhi=-1;
 var args;
 argsArray=[];
@@ -9,8 +10,8 @@ csv
  .fromPath("2020_21ganzhiJieqi.csv", {headers: true})
  .on("data", function(data){
  	switch (data.jieqi) {
- 		case "夏至"：args=processLi(data);argsArray.push(args);args=processXiaDongZhi(data);gengCountsAfterXiazhi=0;argsArray.push(args);break;
- 		case "冬至"：args=processLi(data);argsArray.push(args);args=processXiaDongZhi(data);gengAfterDongzhi=0;argsArray.push(args);break;
+ 		case "夏至":args=processLi(data);argsArray.push(args);args=processXiaDongZhi(data);gengCountsAfterXiazhi=0;argsArray.push(args);break;
+ 		case "冬至":args=processLi(data);argsArray.push(args);args=processXiaDongZhi(data);gengAfterDongzhi=0;argsArray.push(args);break;
  		case "春分": 
  		case "秋分": args=processLi(data);argsArray.push(args);break;
 	 	case "立春": wuCountsAfterLichun=0;args=processJue(data);argsArray.push(args);break;
@@ -25,7 +26,8 @@ csv
  	
  })
  .on("end", function(){
-
+    let ical = lbc.generateCalendarWithSolar(argsArray) ;
+    ical.saveSync("./2020_21solar.ics");
  });
 
 function processXiaDongZhi(data){
@@ -66,7 +68,7 @@ function processSpecial(data){
         solar_year: moment(data.date, 'MM/DD/YYYY').format('Y'),
         solar_month: moment(data.date, 'MM/DD/YYYY').format('M'),
         solar_day: moment(data.date, 'MM/DD/YYYY').format('D'),
-        name: "宜从${data.jieqi}戒过一月",
+        name: `宜从${data.jieqi}戒过一月`,
         color: "red",
         count: 1
     }	

@@ -2,3 +2,5 @@
 *.cache
 public/test.*
 public/.~lock*
+public/in.csv
+public/out.csv
