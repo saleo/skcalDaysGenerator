@@ -33,10 +33,11 @@ csv
     switch (myGanzhi) {
         case "甲子":args=processGanzhi(data,1);argsArray.push(args);break;
         case "庚申":{
-            args=processGanzhi(data,1);argsArray.push(args);break;
+            args=processGanzhi(data,1);argsArray.push(args);
             if (gengCountsAfterXiazhi==2) {args=processGanzhi(data,3);argsArray.push(args);gengCountsAfterXiazhi=-1;}
             else if (gengAfterDongzhi==0) {args=processGanzhi(data,4);argsArray.push(args);gengAfterDongzhi=-1;}
-            else if (gengCountsAfterXiazhi>-1 && myJieqi!="夏至") gengCountsAfterXiazhi++;        
+            else if (gengCountsAfterXiazhi>-1 && myJieqi!="夏至") gengCountsAfterXiazhi++;
+            break;        
         }
         default: {
             gan=myGanzhi.substr(0,1);
@@ -45,7 +46,7 @@ csv
             else if (gan=="庚") {
                 if (gengCountsAfterXiazhi==2) {args=processGanzhi(data,3);argsArray.push(args);gengCountsAfterXiazhi=-1;}
                 else if (gengAfterDongzhi==0) {args=processGanzhi(data,4);argsArray.push(args);gengAfterDongzhi=-1;}
-                else if (gengCountsAfterXiazhi==0 && myJieqi!="夏至") gengCountsAfterXiazhi++;
+                else if (gengCountsAfterXiazhi>-1 && myJieqi!="夏至") gengCountsAfterXiazhi++;
             } 
             else if (gan=="辛") {
                 if (xinAfterDongzhi==0) {args=processGanzhi(data,5);argsArray.push(args); xinAfterDongzhi=-1;}
