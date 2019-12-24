@@ -9,11 +9,14 @@ argsArray=[];
 csv
  .fromPath("2020_21ganzhiJieqi.csv", {headers: true})
  .on("data", function(data){
- 	switch (data.jieqi) {
+ 	let myJieqi=data.jieqi;
+    switch (myJieqi) {
  		case "夏至":
             args=processLi(data);argsArray.push(args);args=processXiaDongZhi(data);gengCountsAfterXiazhi=0;argsArray.push(args);break;
  		case "冬至":
-            args=processLi(data);argsArray.push(args);args=processXiaDongZhi(data);gengAfterDongzhi=0;argsArray.push(args);xuCountsAfterDongzhi=0;break;
+            args=processLi(data);argsArray.push(args);args=processXiaDongZhi(data);
+            gengAfterDongzhi=0;argsArray.push(args);xuCountsAfterDongzhi=0;
+            xinAfterDongzhi=0;break;
  		case "春分": 
  		case "秋分": args=processLi(data);argsArray.push(args);break;
 	 	case "立春": wuCountsAfterLiChun=0;args=processJue(data);argsArray.push(args);break;
@@ -23,14 +26,18 @@ csv
  		case "白露":
  		case "惊蛰":
 		case "芒种": 		
-		case "大雪":args=processSpecial(data);argsArray.push(args);break; 		
+		case "大雪":args=processSpecial(data);argsArray.push(args);break;
  	}
  	
     myGanzhi=data.ganzhi;
     switch (myGanzhi) {
-        case "甲子":
-        case "庚申":
-        case "庚子":args=processGanzhi(data,1);argsArray.push(args);break;
+        case "甲子":args=processGanzhi(data,1);argsArray.push(args);break;
+        case "庚申":{
+            args=processGanzhi(data,1);argsArray.push(args);break;
+            if (gengCountsAfterXiazhi==2) {args=processGanzhi(data,3);argsArray.push(args);gengCountsAfterXiazhi=-1;}
+            else if (gengAfterDongzhi==0) {args=processGanzhi(data,4);argsArray.push(args);gengAfterDongzhi=-1;}
+            else if (gengCountsAfterXiazhi>-1 && myJieqi!="夏至") gengCountsAfterXiazhi++;        
+        }
         default: {
             gan=myGanzhi.substr(0,1);
             zhi=myGanzhi.substr(1,1);
@@ -38,7 +45,7 @@ csv
             else if (gan=="庚") {
                 if (gengCountsAfterXiazhi==2) {args=processGanzhi(data,3);argsArray.push(args);gengCountsAfterXiazhi=-1;}
                 else if (gengAfterDongzhi==0) {args=processGanzhi(data,4);argsArray.push(args);gengAfterDongzhi=-1;}
-                else if (gengCountsAfterXiazhi==0) gengCountsAfterXiazhi++;
+                else if (gengCountsAfterXiazhi==0 && myJieqi!="夏至") gengCountsAfterXiazhi++;
             } 
             else if (gan=="辛") {
                 if (xinAfterDongzhi==0) {args=processGanzhi(data,5);argsArray.push(args); xinAfterDongzhi=-1;}
@@ -47,13 +54,13 @@ csv
             else if (gan=="戊") {
                 if (wuCountsAfterLiChun==4) {args=processGanzhi(data,6);argsArray.push(args); wuCountsAfterLiChun=-1;}
                 else if (wuCountsAfterLiQiu==4) {args=processGanzhi(data,7);argsArray.push(args);wuCountsAfterLiQiu=-1; }
-                else if (wuCountsAfterLiChun==0) wuCountsAfterLiChun++;
-                else if (wuCountsAfterLiQiu==0) wuCountsAfterLiQiu++;
+                else if (wuCountsAfterLiChun>-1 && myJieqi!="立春") wuCountsAfterLiChun++;
+                else if (wuCountsAfterLiQiu>-1 && myJieqi!="立秋") wuCountsAfterLiQiu++;
             }                
             
             if (zhi=="戌") {              
                 if (xuCountsAfterDongzhi==2) {args=processGanzhi(data,8);argsArray.push(args);xuCountsAfterDongzhi=-1;}
-                else if (xuCountsAfterDongzhi==0) xuCountsAfterDongzhi++;            
+                else if (xuCountsAfterDongzhi>-1 && myJieqi!="冬至") xuCountsAfterDongzhi++;            
             }
         }
     }
