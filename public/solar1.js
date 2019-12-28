@@ -1,13 +1,13 @@
 let csv=require("fast-csv");
 let moment = require('moment');
 let lbc = require("lunar-birthday-calendar");
+filename=process.argv[2];
 
 let gengCountsAfterXiazhi=-1, gengAfterDongzhi=-1, xinAfterDongzhi=-1,wuCountsAfterLiChun=-1,wuCountsAfterLiQiu=-1,xuCountsAfterDongzhi=-1;
 var args,myGanzhi,gan,zhi;
 argsArray=[];
 
-csv
- .fromPath("2020_21ganzhiJieqi.csv", {headers: true})
+csv.fromPath("./"+filename+".csv", {headers: true})
  .on("data", function(data){
  	let myJieqi=data.jieqi;
     switch (myJieqi) {
@@ -69,10 +69,11 @@ csv
  })
  .on("end", function(){
     let ical = lbc.generateCalendarWithSolar(argsArray) ;
-    ical.saveSync("./2020_21solar.ics");
+    ical.saveSync("./"+filename+".ics");
  });
 
 function processXiaDongZhi(data){
+    console.log(data);
 	return {
         solar_year: moment(data.date, 'MM/DD/YYYY').format('Y'),
         solar_month: moment(data.date, 'MM/DD/YYYY').format('M'),
