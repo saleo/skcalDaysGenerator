@@ -1,9 +1,9 @@
 # steps to generate skcal-events and test
 
-## steps to generate ganzhi_Jieq_lunar-based sheet
+## steps to generate ganzhi_Jieqi_lunar-based sheet
 
 1,"get 2019_21solarLunar_ganzhiJieqi.csv,based on https://www.weather.gov.hk/tc/gts/time/calendar/pdf/files/2019.pdf,And bieyu.com/astp/06-solugzjd.html"
-2,node getByGanzhi_jieqi，数据来源为2019_21solarLunar_ganzhiJieqi,生成单独或组合 干支、节气、阴历日做条件过滤出的日期，在该日期上修改某些数据项，得到的**2019_21ganzhi_Jieqi_lunar**.ics（最近3年）
+2,node getByGanzhi_jieqi_lunar，数据来源为2019_21solarLunar_ganzhiJieqi,生成单独或组合 干支、节气、阴历日做条件过滤出的日期，在该日期上修改某些数据项，得到的**2019_21ganzhi_Jieqi_lunar**.ics（最近3年）
 
 ## steps to generate lunar-based sheet-yearly,which original data come from monthly sheet(line 175 and the below)+yearly sheet(line 2~174)
 
