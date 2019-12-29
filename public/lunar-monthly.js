@@ -3,7 +3,7 @@ let lbc = require("lunar-birthday-calendar");
 argsArray = [];
 filename=process.argv[2];
 
-csv.fromPath("./lunar-monthly.csv", {
+csv.fromPath("./lunar_yearly.csv", {
     headers: true
 }).on("data", function(data) {
     var mm=(''+data.DTSTART).substr(0,2)
@@ -19,5 +19,5 @@ csv.fromPath("./lunar-monthly.csv", {
     argsArray.push(args)
 }).on("end", function() {
     let ical = lbc.generateCalendar(argsArray) ;
-    ical.saveSync("./lunar-monthly.ics");
+    ical.saveSync("./lunar_yearly.ics");
 })

@@ -1,20 +1,21 @@
 let csv = require("fast-csv");
 let moment = require('moment');
 let lbc = require("lunar-birthday-calendar");
-argsArray = [];
+var color="red",argsArray = [];
 filename=process.argv[2];
 
 csv.fromPath("./"+filename+".csv", {
     headers: true
-}).on("data", function(data) {
-    var mm=(''+data.DTSTART).substr(0,2)
-    var dd=(''+data.DTSTART).substr(2,2)      
+}).on("data", function(data) {   
+    if (data.summary=="三元降"||data.summary=="望"||data.summary=="朔")
+        color="blue";
+
     let args = {      
-        lunar_year: +(filename.substr(5,4)),
-        lunar_month: +mm,
-        lunar_day: +dd,
-        name: data.Summary,
-        color: data.color,
+        lunar_year: +data.lunarYear,
+        lunar_month: +data.lunarMonth,
+        lunar_day: +data.lunarDay,
+        name: data.summary,
+        color: color,
         count: 1
     }
     argsArray.push(args)
