@@ -21,18 +21,18 @@ csv.fromPath("./2019_21solar_lunar.csv", {
     headers: true
 }).on("data", function(data) {
     let yy=data.lunarYear;
-    let mm=data.lunarMonth;
+    let mm=+data.lunarMonth;
     let dd=data.lunarDay;
     let summary="";
     let color="red";
     var args;
 
     switch (dd) {
-        case "17": if (smallMonths[yy].indexOf(+mm)>-1) {summary="毁败日";args=getArg(data,summary,color);argsArray.push(args);}break;
-        case "18": if (bigMonths[yy].indexOf(+mm)>-1) {summary="毁败日";args=getArg(data,summary,color);argsArray.push(args);}break;
-        case "27": if (smallMonths[yy].indexOf(+mm)>-1) {summary="十斋日";args=getArg(data,summary,color);argsArray.push(args);}break;
+        case "17": if (smallMonths[yy].indexOf(mm)>-1) {summary="毁败日";args=getArg(data,summary,color);argsArray.push(args);}break;
+        case "18": if (bigMonths[yy].indexOf(mm)>-1) {summary="毁败日";args=getArg(data,summary,color);argsArray.push(args);}break;
+        case "27": if (smallMonths[yy].indexOf(mm)>-1) {summary="十斋日";args=getArg(data,summary,color);argsArray.push(args);}break;
         case "29": {
-            if (smallMonths[yy].indexOf(+mm)>-1){
+            if (smallMonths[yy].indexOf(mm)>-1){
                 summary="司命奏事";args=getArg(data,summary,color);argsArray.push(args);
                 summary="月晦";color="blue";args=getArg(data,summary,color);argsArray.push(args);
             } 
@@ -50,7 +50,7 @@ csv.fromPath("./2019_21solar_lunar.csv", {
     iCount++;
 }).on("end", function() {
     let ical = lbc.generateCalendarWithSolar(argsArray) ;
-    ical.saveSync("./2019_21lunar_big_small.ics");
+    ical.saveSync("./2019_21lunar_big_small1.ics");
 })
 
 function getArg(data,summary,color){
