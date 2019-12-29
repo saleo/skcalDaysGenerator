@@ -1,0 +1,32 @@
+日子,remark1,remark2,所属工作表,color judge by the day shown on paper-calendar
+二分二至：春分秋分夏至冬至,"2至对应事件均为一个长句=阴阳相争,死生分判,切戒,may have other prompt besides the above… 2 Fen have NOT the same promt with each other","+3,-3 days plus itself,mark red,and plus one bottom line with these 7days and 4th days with a up-arrow at bottom
+
+2分的前后2天共4天红色底线，当天红色向上箭头",from d2,
+甲子日、庚申日，丙日。。是对“日”按照天干地支排序得出的，六十天轮转一次,"术语叫做干支纪日
+
+算做事件，而不是纪日",基准点2019年1月1日为戊戌日，对照寿康日历和知乎文字计算得到的,from C2,"BingRi-blue,2019"
+四离四绝,,,script compute base on ganzhi and jie2qi4,
+我国古代劳动人民通过对自然和天体运行的研究，把一年分为二十四个节气，四离指春分、秋分、夏至、冬至的前一天，称为离日，四绝是指立春、立夏、立秋、立冬的前一天，叫做“绝日。,"4立+前一天的绝日红色底线，
+4立当天红色向上箭头",,same as D8,
+二社日(春社日秋社日),,,same as D8,
+社日（汉语词语）_百度百科,,,,
+https://baike.baidu.com/item/社日,,,,
+社日是古代农民祭祀土地神的节日。 ... 自宋代起，以立春、立秋后的第五个戊日为社日,,手工对照后确认目前用的就是这种方式,,
+三元降,,,,
+三元日，上元日正月十五，中元日七月十五，下元日十月十五，称三元日,根据goodweb.net上的对应信息查看可知：三元日前后2天加当天为三元降，而寿康日历显示是前后加1天,,,
+三伏日,,,same as D8,
+初中末伏的起始日，但在以前和现在版本的纸质台历上都在初伏那天显示“自初伏至三伏共四十日宜戒”,,夏至后第三个庚日为初伏，第4个为中伏，立秋后第一个庚日为末伏,,
+太岁日,NA-没找到相关信息,,come from paper-skcal,
+拈香持斋供谢佛日,NA-没找到相关信息,"在老版寿康日历的ics文件中也没找到,new-version paper skcal has NOT either",come from paper-skcal,
+十恶大败日,goodweb上有，但需要算，干脆根据现成纸面资料获取好了,,come from paper-skcal,
+四天王巡行,,大月多1个三十,monthly+大小月区分,
+上弦月农历初八左右，下弦月在农历每月二十二、二十三日,,,monthly,
+司命奏事,,每月最后一天:大月30小月29,大小月区分,
+毁败日,,大月十八日。小月十七日,大小月区分,
+,同中元,,yearly,
+宜戒,对照新版纸面寿康日历和16年版ics文件：农历九月11，十月11,Grey-show,yearly,
+"五虚忌
+",一月初五,"2018 only this entry on the day, so its Grey-show
+2019 has 2 entries,so its red..the other entry is blue while the whole is red, so we can infer its RED",yearly,
+月晦,Every 25,每月最后一天:大月30小月29,monthly+大小月区分,
+十斋日 ,"Every 1，8,14,15，18,23,28,29",逢小月27，大月 30,monthly+大小月区分,
