@@ -1,27 +1,34 @@
 # steps to generate skcal-events and test
 
-## steps to generate ganzhi_Jieqi_lunar-based sheet
+## 1. steps to generate ganzhi_Jieqi_lunar-based sheet
 
 1,"get 2019_21solarLunar_ganzhiJieqi.csv,based on https://www.weather.gov.hk/tc/gts/time/calendar/pdf/files/2019.pdf,And bieyu.com/astp/06-solugzjd.html"
 2,node getByGanzhi_jieqi_lunar，数据来源为2019_21solarLunar_ganzhiJieqi,生成单独或组合 干支、节气、阴历日做条件过滤出的日期，在该日期上修改某些数据项，得到的**2019_21ganzhi_Jieqi_lunar**.ics（最近3年）
 
-## steps to generate lunar-based sheet-yearly,which original data come from monthly sheet(line 175 and the below)+yearly sheet(line 2~174)
+## 2.steps to generate lunar-based sheet-yearly,which original data come from monthly sheet(line 175 and the below)+yearly sheet(line 2~174)
 
-1,monthly和yearly，2个sheet合并为lunar_yearly.csv...add head at line 1
-2,run ‘node getByLunarYear ,数据来源为lunaryearly.csv根据lunar_yearly生成最近3年按阴历年计算的数据**2019_21lunarYearly**.ics
+1,same as above
+2,run ‘node getByLunarYear 2019_21solarLunar_ganzhiJieqi 得到 lunar_yearly.ics
 
-## steps to generate lunar-based sheet大小月区分:
-1,prepare 2019_21solarLunar_ganzhiJieqi.csv,
+## 3. steps to generate lunar-based sheet大小月区分:
+1,same as above
 2,run ‘node node getByLunarBigSmallMonth，数据来源为2019_21solarLunar_ganzhiJieqi,生成根据阴历大小月过滤的日期，在该日期上修改某些数据项，得到**2019_21lunar_big_small**.ics文件(最近3年)
 
-## steps to generate misc-events sheet
-
-1,"Based on solar-based and the paper calendar and get the events besides above mentioned ones: 太岁日,etc。。2019 only，in the format “term-dtstart-color”,color need input one by one by hand or by formula
-,save as solar2020misc.csv"
-2,"run ‘node solar solar2019misc’ to get solar2020misc.ics, "
-3,same for  solar2021misc
 
 
+## 4.the ics from above 1,2, 3 are import google calendar, 
+
+always one missing as below:
+
+>已导入 452 个活动，共 453 个。此文件中的有些活动并未导入，因为以前已经将其导入至 Google 日历。此文件中的其他活动已导入
+
+## 5. input those ones that cannot fetch or missing from paper-skcal.
+
+compared with paper-skcal, 
+
+---
+
+## 6. validating,and export to a final ics
 
 ## 纠错：
 
