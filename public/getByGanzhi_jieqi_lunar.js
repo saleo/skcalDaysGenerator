@@ -70,8 +70,9 @@ csv.fromPath("./"+filename+".csv", {headers: true})
 
 //process 阴错日,阳错日
     myLunarMonth=+data.lunarMonth;
-    if (yinCuo[myLunarMonth]==myGanzhi) { summary="阴错日";processCuo(data,summary);}
-    if (yangCuo[myLunarMonth]==myGanzhi) { summary="阳错日";processCuo(data,summary);}
+    console.log (myLunarMonth);
+    if (yinCuo[myLunarMonth-1]==myGanzhi) { summary="阴错日";args=processCuo(data,summary);argsArray.push(args);}
+    if (yangCuo[myLunarMonth-1]==myGanzhi) { summary="阳错日";args=processCuo(data,summary);argsArray.push(args);}
  })
  .on("end", function(){
     let ical = lbc.generateCalendarWithSolar(argsArray) ;
@@ -154,7 +155,7 @@ function processCuo(data,summary){
         solar_month: moment(data.solar, 'MM/DD/YYYY').format('M'),
         solar_day: moment(data.solar, 'MM/DD/YYYY').format('D'),
         name: summary,
-        color: "red",   
+        color: "blue",   
         count: 1
     }
 }
