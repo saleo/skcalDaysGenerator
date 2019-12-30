@@ -2,9 +2,10 @@ let csv=require("fast-csv");
 let moment = require('moment');
 let lbc = require("lunar-birthday-calendar");
 filename=process.argv[2];
-
+let yinCuo=["庚戌","辛酉","庚申","丁未","丙午","丁巳","甲辰","乙卯","甲寅","癸丑","壬子","癸亥"];
+let yangCuo=["甲寅","乙卯","甲辰","丁巳","丙午","丁未","庚申","辛酉","庚戌","癸亥","壬子","癸丑"];
 let gengCountsAfterXiazhi=-1, gengAfterDongzhi=-1, xinAfterDongzhi=-1,wuCountsAfterLiChun=-1,wuCountsAfterLiQiu=-1,xuCountsAfterDongzhi=-1;
-var args,myGanzhi,gan,zhi;
+var args,myGanzhi,gan,zhi,summary;
 argsArray=[];
 
 csv.fromPath("./"+filename+".csv", {headers: true})
@@ -66,6 +67,11 @@ csv.fromPath("./"+filename+".csv", {headers: true})
         }
     }
 
+
+//process 阴错日,阳错日
+    myLunarMonth=+data.lunarMonth;
+    if (yinCuo[myLunarMonth]==myGanzhi) { summary="阴错日";processCuo(data,summary);}
+    if (yangCuo[myLunarMonth]==myGanzhi) { summary="阳错日";processCuo(data,summary);}
  })
  .on("end", function(){
     let ical = lbc.generateCalendarWithSolar(argsArray) ;
@@ -73,11 +79,11 @@ csv.fromPath("./"+filename+".csv", {headers: true})
  });
 
 function processXiaDongZhi(data){
-    console.log(data);
+    //console.log(data);
 	return {
-        solar_year: moment(data.date, 'MM/DD/YYYY').format('Y'),
-        solar_month: moment(data.date, 'MM/DD/YYYY').format('M'),
-        solar_day: moment(data.date, 'MM/DD/YYYY').format('D'),
+        solar_year: moment(data.solar, 'MM/DD/YYYY').format('Y'),
+        solar_month: moment(data.solar, 'MM/DD/YYYY').format('M'),
+        solar_day: moment(data.solar, 'MM/DD/YYYY').format('D'),
         name: "阴阳相争,死生分判,切戒",
         color: "red",	
         count: 1
@@ -86,9 +92,9 @@ function processXiaDongZhi(data){
 
 function processLi(data){
 	return {
-        solar_year: moment(data.date, 'MM/DD/YYYY').subtract(1,'days').format('Y'),
-        solar_month: moment(data.date, 'MM/DD/YYYY').subtract(1,'days').format('M'),
-        solar_day: moment(data.date, 'MM/DD/YYYY').subtract(1,'days').format('D'),
+        solar_year: moment(data.solar, 'MM/DD/YYYY').subtract(1,'days').format('Y'),
+        solar_month: moment(data.solar, 'MM/DD/YYYY').subtract(1,'days').format('M'),
+        solar_day: moment(data.solar, 'MM/DD/YYYY').subtract(1,'days').format('D'),
         name: "四离日",
         color: "red",
         count: 1
@@ -97,9 +103,9 @@ function processLi(data){
 	
 function processJue(data){
 	return {
-        solar_year: moment(data.date, 'MM/DD/YYYY').subtract(1,'days').format('Y'),
-        solar_month: moment(data.date, 'MM/DD/YYYY').subtract(1,'days').format('M'),
-        solar_day: moment(data.date, 'MM/DD/YYYY').subtract(1,'days').format('D'),
+        solar_year: moment(data.solar, 'MM/DD/YYYY').subtract(1,'days').format('Y'),
+        solar_month: moment(data.solar, 'MM/DD/YYYY').subtract(1,'days').format('M'),
+        solar_day: moment(data.solar, 'MM/DD/YYYY').subtract(1,'days').format('D'),
         name: "四绝日",
         color: "red",
         count: 1
@@ -108,9 +114,9 @@ function processJue(data){
  
 function processSpecial(data){
 	return {
-        solar_year: moment(data.date, 'MM/DD/YYYY').format('Y'),
-        solar_month: moment(data.date, 'MM/DD/YYYY').format('M'),
-        solar_day: moment(data.date, 'MM/DD/YYYY').format('D'),
+        solar_year: moment(data.solar, 'MM/DD/YYYY').format('Y'),
+        solar_month: moment(data.solar, 'MM/DD/YYYY').format('M'),
+        solar_day: moment(data.solar, 'MM/DD/YYYY').format('D'),
         name: `宜从${data.jieqi}戒过一月`,
         color: "red",
         count: 1
@@ -119,9 +125,9 @@ function processSpecial(data){
 
 function processGanzhi(data,option){
     return {
-        solar_year: moment(data.date, 'MM/DD/YYYY').format('Y'),
-        solar_month: moment(data.date, 'MM/DD/YYYY').format('M'),
-        solar_day: moment(data.date, 'MM/DD/YYYY').format('D'),
+        solar_year: moment(data.solar, 'MM/DD/YYYY').format('Y'),
+        solar_month: moment(data.solar, 'MM/DD/YYYY').format('M'),
+        solar_day: moment(data.solar, 'MM/DD/YYYY').format('D'),
         name: nameTrans(option),
         color: (gan=="丙" || gan=="丁") ? "blue":"red",
         count: 1
@@ -139,6 +145,17 @@ function nameTrans(option){
         case 6: return "春社日";
         case 7: return "秋社日";
         case 8: return "冬至后第三戌日";
+    }
+}
+
+function processCuo(data,summary){
+    return {
+        solar_year: moment(data.solar, 'MM/DD/YYYY').format('Y'),
+        solar_month: moment(data.solar, 'MM/DD/YYYY').format('M'),
+        solar_day: moment(data.solar, 'MM/DD/YYYY').format('D'),
+        name: summary,
+        color: "red",   
+        count: 1
     }
 }
 
