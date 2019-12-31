@@ -7,8 +7,18 @@
 
 ## 2.steps to generate lunar-based sheet-yearly,which original data come from monthly sheet(line 175 and the below)+yearly sheet(line 2~174)
 
-1,same as above
-2,run ‘node getByLunarYear 2019_21solarLunar_ganzhiJieqi 得到 lunar_yearly.ics
+ 1. same as above
+
+ 2. prepare moduleEventsByLunar.js, which contains 2dimension array : events[LunarM\][ luNarD ]=eventsSummary 
+
+    ```shell
+    node getModuleEventsByLunar>1.txt
+    然后把1.txt内容复制到 moduleEventsByLunar.js中
+    ```
+
+    
+
+ 3. run ‘node getByLunarYear 2019_21solarLunar_ganzhiJieqi 得到 lunar_yearly.ics
 
 ## 3. steps to generate lunar-based sheet大小月区分:
 1,same as above
