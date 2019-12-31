@@ -15,9 +15,8 @@ smallMonths[2021]=[1,4,6,8,10,12];
 bigMonths[2021]=[2,3,5,7,9,11];
 
 argsArray = [];
-var iCount=0;
 
-csv.fromPath("./2019_21solar_lunar.csv", {
+csv.fromPath("./2019_21solarLunar_ganzhiJieqi.csv", {
     headers: true
 }).on("data", function(data) {
     let yy=data.lunarYear;
@@ -25,32 +24,55 @@ csv.fromPath("./2019_21solar_lunar.csv", {
     let dd=data.lunarDay;
     let summary="";
     let color="red";
+    let leapBigSmall=+data.leapBigSmall;
     var args;
 
-    switch (dd) {
-        case "17": if (smallMonths[yy].indexOf(mm)>-1) {summary="毁败日";args=getArg(data,summary,color);argsArray.push(args);}break;
-        case "18": if (bigMonths[yy].indexOf(mm)>-1) {summary="毁败日";args=getArg(data,summary,color);argsArray.push(args);}break;
-        case "27": if (smallMonths[yy].indexOf(mm)>-1) {summary="十斋日";args=getArg(data,summary,color);argsArray.push(args);}break;
-        case "29": {
-            if (smallMonths[yy].indexOf(mm)>-1){
+    if (leapBigSmall==0)
+    {    switch (dd) {
+            case "17": if (smallMonths[yy].indexOf(mm)>-1) {summary="毁败日";args=getArg(data,summary,color);argsArray.push(args);}break;
+            case "18": if (bigMonths[yy].indexOf(mm)>-1) {summary="毁败日";args=getArg(data,summary,color);argsArray.push(args);}break;
+            case "27": if (smallMonths[yy].indexOf(mm)>-1) {summary="十斋日";args=getArg(data,summary,color);argsArray.push(args);}break;
+            case "29": {
+                if (smallMonths[yy].indexOf(mm)>-1){
+                    summary="司命奏事";args=getArg(data,summary,color);argsArray.push(args);
+                    summary="月晦";color="blue";args=getArg(data,summary,color);argsArray.push(args);
+                } 
+                break;
+            }
+            case "30": {
+                summary="司命奏事";args=getArg(data,summary,color);argsArray.push(args);
+                summary="十斋日";args=getArg(data,summary,color);argsArray.push(args);
+                summary="月晦";args=getArg(data,summary,color);argsArray.push(args);
+                summary="四天王巡行";args=getArg(data,summary,color);argsArray.push(args);        
+                break;
+            }
+
+        }
+    }
+    else if (leapBigSmall==1){
+        switch (dd) {
+            case "17": summary="毁败日";args=getArg(data,summary,color);argsArray.push(args);break;
+            case "27": summary="十斋日";args=getArg(data,summary,color);argsArray.push(args);break;
+            case "29": 
                 summary="司命奏事";args=getArg(data,summary,color);argsArray.push(args);
                 summary="月晦";color="blue";args=getArg(data,summary,color);argsArray.push(args);
-            } 
-            break;
+                break;
+            }
         }
-        case "30": {
-            summary="司命奏事";args=getArg(data,summary,color);argsArray.push(args);
-            summary="十斋日";args=getArg(data,summary,color);argsArray.push(args);
-            summary="月晦";args=getArg(data,summary,color);argsArray.push(args);
-            summary="四天王巡行";args=getArg(data,summary,color);argsArray.push(args);        
-            break;
-        }
-
+    else{
+        switch (dd) {
+            case "18": summary="毁败日";args=getArg(data,summary,color);argsArray.push(args);break;
+            case "30": 
+                summary="司命奏事";args=getArg(data,summary,color);argsArray.push(args);
+                summary="十斋日";args=getArg(data,summary,color);argsArray.push(args);
+                summary="月晦";args=getArg(data,summary,color);argsArray.push(args);
+                summary="四天王巡行";args=getArg(data,summary,color);argsArray.push(args);        
+                break;
+        }        
     }
-    iCount++;
 }).on("end", function() {
     let ical = lbc.generateCalendarWithSolar(argsArray) ;
-    ical.saveSync("./2019_21lunar_big_small1.ics");
+    ical.saveSync("./2019_21lunar_big_small.ics");
 })
 
 function getArg(data,summary,color){
