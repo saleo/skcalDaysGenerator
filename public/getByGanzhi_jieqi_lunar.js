@@ -4,7 +4,7 @@ let lbc = require("lunar-birthday-calendar");
 filename=process.argv[2];
 let yinCuo=["庚戌","辛酉","庚申","丁未","丙午","丁巳","甲辰","乙卯","甲寅","癸丑","壬子","癸亥"];
 let yangCuo=["甲寅","乙卯","甲辰","丁巳","丙午","丁未","庚申","辛酉","庚戌","癸亥","壬子","癸丑"];
-let gengCountsAfterXiazhi=-1, gengAfterDongzhi=-1, xinAfterDongzhi=-1,wuCountsAfterLiChun=-1,wuCountsAfterLiQiu=-1,xuCountsAfterDongzhi=-1;
+let gengCountsAfterXiazhi=-1, gengAfterLiqiu=-1,gengAfterDongzhi=-1, xinAfterDongzhi=-1,wuCountsAfterLiChun=-1,wuCountsAfterLiQiu=-1,xuCountsAfterDongzhi=-1;
 var args,myGanzhi,gan,zhi,summary;
 argsArray=[];
 
@@ -21,7 +21,7 @@ csv.fromPath("./"+filename+".csv", {headers: true})
  		case "春分": 
  		case "秋分": args=processLi(data);argsArray.push(args);break;
 	 	case "立春": wuCountsAfterLiChun=0;args=processJue(data);argsArray.push(args);break;
- 		case "立秋": wuCountsAfterLiQiu=0;args=processJue(data);argsArray.push(args);break;
+ 		case "立秋": wuCountsAfterLiQiu=0;gengAfterLiqiu=0;args=processJue(data);argsArray.push(args);break;
  		case "立夏":  		
  		case "立冬": args=processJue(data);argsArray.push(args);break;
  		case "白露":
@@ -35,7 +35,8 @@ csv.fromPath("./"+filename+".csv", {headers: true})
         case "甲子":args=processGanzhi(data,1);argsArray.push(args);break;
         case "庚申":{
             args=processGanzhi(data,1);argsArray.push(args);
-            if (gengCountsAfterXiazhi==2) {args=processGanzhi(data,3);argsArray.push(args);gengCountsAfterXiazhi=-1;}
+            if (gengCountsAfterXiazhi==2) {args=processGanzhi(data,3);argsArray.push(args);gengCountsAfterXiazhi++;}
+            else if (gengCountsAfterXiazhi==3) {args=processGanzhi(data,31);argsArray.push(args);gengCountsAfterXiazhi=-1;}
             else if (gengAfterDongzhi==0) {args=processGanzhi(data,4);argsArray.push(args);gengAfterDongzhi=-1;}
             else if (gengCountsAfterXiazhi>-1 && myJieqi!="夏至") gengCountsAfterXiazhi++;
             break;        
@@ -45,7 +46,9 @@ csv.fromPath("./"+filename+".csv", {headers: true})
             zhi=myGanzhi.substr(1,1);
             if (gan=="丙" || gan=="丁") {args=processGanzhi(data,2);argsArray.push(args); } 
             else if (gan=="庚") {
-                if (gengCountsAfterXiazhi==2) {args=processGanzhi(data,3);argsArray.push(args);gengCountsAfterXiazhi=-1;}
+                if (gengCountsAfterXiazhi==2) {args=processGanzhi(data,3);argsArray.push(args);gengCountsAfterXiazhi++;}
+                else if (gengCountsAfterXiazhi==3) {args=processGanzhi(data,31);argsArray.push(args);gengCountsAfterXiazhi=-1;}
+                else if (gengAfterLiqiu==0) {args=processGanzhi(data,32);argsArray.push(args);gengAfterLiqiu=-1;}
                 else if (gengAfterDongzhi==0) {args=processGanzhi(data,4);argsArray.push(args);gengAfterDongzhi=-1;}
                 else if (gengCountsAfterXiazhi>-1 && myJieqi!="夏至") gengCountsAfterXiazhi++;
             } 
@@ -141,6 +144,8 @@ function nameTrans(option){
         case 1: return `${myGanzhi}日`;
         case 2: return `${gan}日`;
         case 3: return "初伏，宜戒30天(从今至末伏)";
+        case 31: return "中伏";
+        case 32: return "末伏";
         case 4: return "冬至后庚日";
         case 5: return "冬至后辛日";
         case 6: return "春社日";
