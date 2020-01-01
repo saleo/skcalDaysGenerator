@@ -5,7 +5,7 @@
 1,"get 2019_21solarLunar_ganzhiJieqi.csv,based on https://www.weather.gov.hk/tc/gts/time/calendar/pdf/files/2019.pdf,And bieyu.com/astp/06-solugzjd.html"
 2,node getByGanzhi_jieqi_lunar，数据来源为2019_21solarLunar_ganzhiJieqi,生成单独或组合 干支、节气、阴历日做条件过滤出的日期，在该日期上修改某些数据项，得到的**2019_21ganzhi_Jieqi_lunar**.ics（最近3年）
 
-## 2.steps to generate lunar-based sheet-yearly,which original data come from monthly sheet(line 175 and the below)+yearly sheet(line 2~174)
+## 2.steps to generate lunar-based sheet-yearly,which original data come from monthly sheet
 
  1. same as above
 
@@ -24,21 +24,24 @@
 1,same as above
 2,run ‘node node getByLunarBigSmallMonth，数据来源为2019_21solarLunar_ganzhiJieqi,生成根据阴历大小月过滤的日期，在该日期上修改某些数据项，得到**2019_21lunar_big_small**.ics文件(最近3年)
 
+## 4.generate misc.ics
 
+1. search paper-skcal to get 太岁日,十恶大败日 ,放入2019_21misc.csv
+2. "node misc 2019_21misc.csv" to get the ics file
 
-## 4.the ics from above 1,2, 3 are import google calendar, 
+## 5.the ics from above 1,2, 3,4 are imported google calendar, 
 
 always one missing as below:
 
 >已导入 452 个活动，共 453 个。此文件中的有些活动并未导入，因为以前已经将其导入至 Google 日历。此文件中的其他活动已导入
 
-## 5. input those ones that cannot fetch or missing from paper-skcal.
+## 6. input those ones that cannot fetch or missing from paper-skcal.
 
 compared with paper-skcal, 
 
 ---
 
-## 6. validating,and export to a final ics
+## 7. validating,and export to a final ics
 
 ## 纠错：
 
