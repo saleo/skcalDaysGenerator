@@ -41,7 +41,11 @@ compared with paper-skcal,
 
 ---
 
-## 7. validating,and export to a final ics
+## 7. validating with online ics validator
+
+https://icalendar.org/validator.html
+
+## 8.export to a final ics,replace location with color
 
 ## 纠错：
 
