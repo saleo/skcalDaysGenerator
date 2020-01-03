@@ -45,7 +45,9 @@ compared with paper-skcal,
 
 https://icalendar.org/validator.html
 
-## 8.export to a final ics,replace location with color
+## 8.run ./cat_ics去生成final ics
+
+包括,concat the 4 ics files, replace location with color, remove duplcated lines when concat.
 
 ## 纠错：
 
