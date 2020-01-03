@@ -15,6 +15,7 @@ csv.fromPath("./"+filename+".csv", {
     let myEvents=eventsByLunar[lunarMonth-1][lunarDay-1];
     if (myEvents!='')
     {
+        let color="red";
         let eventsArray=myEvents.split(",");
         len=eventsArray.length;
         for (i=0;i<len;i++) {     
