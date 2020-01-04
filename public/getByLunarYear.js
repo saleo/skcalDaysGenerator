@@ -15,12 +15,12 @@ csv.fromPath("./"+filename+".csv", {
     let myEvents=eventsByLunar[lunarMonth-1][lunarDay-1];
     if (myEvents!='')
     {
-        let color="red";
         let eventsArray=myEvents.split(",");
         len=eventsArray.length;
         for (i=0;i<len;i++) {     
+            let color="red";
             let summary=eventsArray[i];
-            if (summary=="三元降"||summary=="望"||summary=="朔")
+            if (summary=="三元降"||summary=="望"||summary=="朔"||summary=="太素三元君朝真")
                     color="blue";
     
                 let args = {      
