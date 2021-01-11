@@ -4,7 +4,7 @@ let lbc = require("lunar-birthday-calendar");
 let eventsByLunar= require("./moduleEventsByLunar.js")
 var i=0,len;
 var color="red",argsArray = [];
-let blueItems={"三元降","望","朔","太素三元君朝真","月晦","雷斋日","天地仓开日","天地交道","南赡部洲击大法鼓","金龙四大王诞"};
+let blueItems=["三元降","望","朔","太素三元君朝真","月晦","雷斋日","天地仓开日","天地交道","南赡部洲击大法鼓","金龙四大王诞"];
 
 filename=process.argv[2];
 
